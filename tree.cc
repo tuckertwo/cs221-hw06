@@ -1,8 +1,7 @@
 #include "tree.hh"
 
 //////////////////////////////////////////////////////////////////////////////
-tree_ptr_t
-create_tree(const key_type& key,
+tree_ptr_t create_tree(const key_type& key,
             const value_type& value,
             tree_ptr_t left,
             tree_ptr_t right)
@@ -11,21 +10,27 @@ create_tree(const key_type& key,
 
 
 //////////////////////////////////////////////////////////////////////////////
-void
-destroy_tree(tree_ptr_t tree)
+void destroy_tree(tree_ptr_t tree)
+{
+  for(tree_ptr_t branch : {tree->left, tree->right})
+  {
+    if(branch)
+    {
+      destroy_tree(branch);
+    }
+  }
+
+  delete tree;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////
+std::string path_to(tree_ptr_t tree, key_type key)
 {
 }
 
 
 //////////////////////////////////////////////////////////////////////////////
-std::string
-path_to(tree_ptr_t tree, key_type key)
-{
-}
-
-
-//////////////////////////////////////////////////////////////////////////////
-tree_ptr_t
-node_at(tree_ptr_t tree, std::string path)
+tree_ptr_t node_at(tree_ptr_t tree, std::string path)
 {
 }
