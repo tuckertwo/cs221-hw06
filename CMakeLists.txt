@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.10)
+project(gridpi)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+add_compile_options(-Wall -Wextra -pedantic)
+add_library(Tree tree.cc)
+
+find_package(Catch2 REQUIRED)
+add_executable(test_tree test_tree.cc)
+target_link_libraries(test_tree PRIVATE Catch2::Catch2WithMain)
+target_link_libraries(test_tree LINK_PUBLIC Tree)
