@@ -1,4 +1,5 @@
 #include "tree.hh"
+using namespace std;
 
 //////////////////////////////////////////////////////////////////////////////
 tree_ptr_t create_tree(const key_type& key,
@@ -36,4 +37,30 @@ std::string path_to(tree_ptr_t tree, key_type key)
 //////////////////////////////////////////////////////////////////////////////
 tree_ptr_t node_at(tree_ptr_t tree, std::string path)
 {
+  if(path == "")
+  {
+    return nullptr;
+  }
+  else
+  {
+    tree_ptr_t nextel = nullptr;
+    if(path[0] == 'L' && tree->left_)
+    {
+      nextel = tree->left_;
+    }
+    else if(path[0] == 'R' && tree->right_)
+    {
+      nextel = tree->right_;
+    }
+
+    if(nextel && path.length()>1)
+    {
+      // Yoink the first character off of the string and continue traversing.
+      return node_at(nextel, path.substr(1));
+    }
+    else
+    {
+      return nextel;
+    }
+  }
 }
