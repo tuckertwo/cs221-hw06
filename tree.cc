@@ -7,6 +7,8 @@ tree_ptr_t create_tree(const key_type& key,
             tree_ptr_t left,
             tree_ptr_t right)
 {
+     
+            
 }
 
 
@@ -31,6 +33,21 @@ void destroy_tree(tree_ptr_t tree)
 //////////////////////////////////////////////////////////////////////////////
 std::string path_to(tree_ptr_t tree, key_type key)
 {
+  if (key==tree->key_){
+      return ""
+  }
+  
+  else if(tree->left_ &&(string subpath = path_to(tree->left_, key))!="-"){
+      return "L" + subpath
+  }
+            
+  else if(tree->right_ &&(string subpath = path_to(tree->right_, key))!="-"){
+      return "R" + subpath
+  }
+            
+  else{
+      return "-"
+  }
 }
 
 
