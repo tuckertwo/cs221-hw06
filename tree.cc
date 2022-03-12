@@ -7,6 +7,7 @@ tree_ptr_t create_tree(const key_type& key,
             tree_ptr_t left,
             tree_ptr_t right)
 {
+    Tree tree = {key, value, left, right}
      
             
 }
