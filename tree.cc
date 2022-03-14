@@ -34,7 +34,12 @@ void destroy_tree(tree_ptr_t tree)
 std::string path_to(tree_ptr_t tree, key_type key)
 {
   string subpath;
-  if (key==tree->key_){
+  if(tree == nullptr)
+  {
+    return "-";
+  }
+  else if(key==tree->key_)
+  {
       return "";
   }
 
