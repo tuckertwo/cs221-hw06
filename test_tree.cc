@@ -22,3 +22,16 @@ TEST_CASE("Creating trees")
   REQUIRE(sequoia->left_->left_->left_->left_    == nullptr);
   REQUIRE(sequoia->left_->left_->left_->right_   == leaf);
 }
+
+TEST_CASE("Tree traversal functions")
+{
+  REQUIRE(path_to(nullptr, 10) == "-");
+  REQUIRE(node_at(nullptr, "LRLRLRLR") == nullptr);
+  REQUIRE(path_to(leaf, 16) == "");
+  REQUIRE(path_to(leaf, 32) == "-");
+  REQUIRE(path_to(sequoia, 32) == "-");
+  REQUIRE(path_to(sequoia, 154) == "");
+  REQUIRE(path_to(sequoia, 16) == "LLLR");
+  REQUIRE(node_at(sequoia, path_to(sequoia, 154)) == sequoia);
+  REQUIRE(node_at(sequoia, path_to(sequoia, 16))  == leaf);
+}
