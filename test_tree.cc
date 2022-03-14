@@ -39,6 +39,5 @@ TEST_CASE("Tree traversal functions")
 
 TEST_CASE("The lumberjack")
 {
-  destroy_tree(leaf);
   destroy_tree(sequoia);
 }
