@@ -32,6 +32,7 @@ TEST_CASE("Tree traversal functions")
   REQUIRE(path_to(sequoia, 32) == "-");
   REQUIRE(path_to(sequoia, 154) == "");
   REQUIRE(path_to(sequoia, 16) == "LLLR");
+  REQUIRE(node_at(sequoia, "") == sequoia);
   REQUIRE(node_at(sequoia, path_to(sequoia, 154)) == sequoia);
   REQUIRE(node_at(sequoia, path_to(sequoia, 16))  == leaf);
 }
