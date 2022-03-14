@@ -60,14 +60,18 @@ std::string path_to(tree_ptr_t tree, key_type key)
 //////////////////////////////////////////////////////////////////////////////
 tree_ptr_t node_at(tree_ptr_t tree, std::string path)
 {
-  if(path == "")
+  if(tree == nullptr)
   {
     return nullptr;
   }
   else
   {
     tree_ptr_t nextel = nullptr;
-    if(path[0] == 'L' && tree->left_)
+    if(path == "")
+    {
+      nextel = tree;
+    }
+    else if(path[0] == 'L' && tree->left_)
     {
       nextel = tree->left_;
     }
