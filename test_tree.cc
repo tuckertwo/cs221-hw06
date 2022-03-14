@@ -36,3 +36,9 @@ TEST_CASE("Tree traversal functions")
   REQUIRE(node_at(sequoia, path_to(sequoia, 154)) == sequoia);
   REQUIRE(node_at(sequoia, path_to(sequoia, 16))  == leaf);
 }
+
+TEST_CASE("The lumberjack")
+{
+  destroy_tree(leaf);
+  destroy_tree(sequoia);
+}
